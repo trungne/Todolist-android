@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.AddTaskButton).setOnClickListener(v -> {
             Intent intent = new Intent(this, AddTaskActivity.class);
             startActivity(intent);
-            Toast.makeText(this, "task created", Toast.LENGTH_SHORT).show();
         });
 
         createTasks();
