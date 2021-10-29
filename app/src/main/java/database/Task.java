@@ -31,8 +31,8 @@ public class Task {
     @ColumnInfo(name = "finished_time")
     public LocalDateTime finishedTime;
 
-    public Task(String description, int priority, LocalDateTime createdTime, LocalDateTime finishedTime){
-        this.taskDescription = description;
+    public Task(String taskDescription, int priority, LocalDateTime createdTime, LocalDateTime finishedTime){
+        this.taskDescription = taskDescription;
         this.priority = priority;
         this.createdTime = createdTime;
         this.finishedTime = finishedTime;

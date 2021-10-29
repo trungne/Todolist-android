@@ -2,15 +2,12 @@ package com.main.todolist;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,7 +18,7 @@ import android.widget.Toast;
 import java.time.LocalDateTime;
 
 import database.Task;
-import views.TaskViewModel;
+import model.TaskViewModel;
 
 public class AddTaskActivity extends AppCompatActivity {
     private TextView taskDescription;
@@ -84,7 +81,7 @@ public class AddTaskActivity extends AppCompatActivity {
         LocalDateTime createdTime = LocalDateTime.now();
 
         Task task = new Task(description, priority, createdTime, finishedTime);
-//        viewModel.insert(task);
+        viewModel.insert(task);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

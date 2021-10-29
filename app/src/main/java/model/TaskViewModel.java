@@ -1,4 +1,4 @@
-package views;
+package model;
 
 import android.app.Application;
 
@@ -13,8 +13,8 @@ import database.TaskRepository;
 
 public class TaskViewModel extends AndroidViewModel {
 
-    private TaskRepository taskRepository;
-    private LiveData<List<Task>> allTasks;
+    private final TaskRepository taskRepository;
+    private final LiveData<List<Task>> allTasks;
 
     public TaskViewModel(@NonNull Application application) {
         super(application);
@@ -30,8 +30,11 @@ public class TaskViewModel extends AndroidViewModel {
         this.taskRepository.insert(task);
     }
 
-    // TODO: delete task by id
     public void delete(Task task){
         this.taskRepository.delete(task);
+    }
+
+    public void deleteById(int id){
+        this.taskRepository.deleteById(id);
     }
 }
