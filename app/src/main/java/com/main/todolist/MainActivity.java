@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,50 +14,44 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import database.Task;
 import model.TaskViewModel;
 
 public class MainActivity extends AppCompatActivity {
-    private LinearLayout tasksLayout;
-    ViewGroup.LayoutParams params;
+    private RecyclerView recyclerView;
+    private ViewAdapter viewAdapter;
 
     private TaskViewModel model;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.tasksLayout = findViewById(R.id.tasks);
+        this.recyclerView = findViewById(R.id.tasks);
+        this.swipeRefreshLayout = findViewById(R.id.refreshLayout);
 
-        // params for task display
-        this.params = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        );
-        findViewById(R.id.AddTaskButton).setOnClickListener(v -> {
-            Intent intent = new Intent(this, AddTaskActivity.class);
-            startActivity(intent);
-        });
+//        swipeRefreshLayout.setOnRefreshListener(() -> {
+//            startActivity(new Intent(this, AddTaskActivity.class));
+//            this.swipeRefreshLayout.setRefreshing(true);
+//        });
 
         this.model = new ViewModelProvider(this).get(TaskViewModel.class);
+        this.viewAdapter = new ViewAdapter(new ArrayList<>(), getSupportFragmentManager(), model);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         final Observer<List<Task>> tasksObserver = new Observer<List<Task>>() {
             @Override
             public void onChanged(List<Task> tasks) {
-                tasksLayout.removeAllViews();
-                for (Task task: tasks){
-                    String description = task.getTaskDescription();
-                    TextView textView = new TextView(getApplicationContext());
-                    textView.setText(description);
-                    tasksLayout.addView(textView);
-                }
+                viewAdapter.updateTasks(tasks);
+                recyclerView.setAdapter(viewAdapter);
             }
         };
 
@@ -72,10 +69,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.calendar_menu:
-                Toast.makeText(this, "Calendar selected", Toast.LENGTH_SHORT).show();
+            case R.id.add_task_menu:
+                startActivity(new Intent(this, AddTaskActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

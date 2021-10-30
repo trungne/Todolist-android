@@ -19,6 +19,13 @@ public interface TaskDao {
     @Query("DELETE FROM tasks WHERE id = :id")
     void deleteById(int id);
 
+    @Query("SELECT * FROM TASKS WHERE id = :id")
+    LiveData<Task> selectById(int id);
+
+    @Query("UPDATE TASKS SET task_description = :description, priority = :priority, finished_time = :finishedTime" +
+            " WHERE id = :id")
+    void update(int id, String description, int priority, String finishedTime);
+
     @Query("SELECT * FROM tasks")
     LiveData<List<Task>> getAllTasks();
 }

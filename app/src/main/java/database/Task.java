@@ -10,11 +10,11 @@ import java.time.LocalDateTime;
 @Entity(tableName = "tasks")
 public class Task {
     @Ignore
-    public static int TASK_PRIORITY_LOW = 0;
+    public static final int TASK_PRIORITY_LOW = 0;
     @Ignore
-    public static int TASK_PRIORITY_MEDIUM = 1;
+    public static final int TASK_PRIORITY_MEDIUM = 1;
     @Ignore
-    public static int TASK_PRIORITY_HIGH = 2;
+    public static final int TASK_PRIORITY_HIGH = 2;
 
     @PrimaryKey(autoGenerate = true)
     public int id;
@@ -22,7 +22,6 @@ public class Task {
     @ColumnInfo(name = "task_description")
     public String taskDescription;
 
-    @ColumnInfo
     public int priority;
 
     @ColumnInfo(name = "created_time")
@@ -31,11 +30,15 @@ public class Task {
     @ColumnInfo(name = "finished_time")
     public LocalDateTime finishedTime;
 
+    @ColumnInfo(name = "is_finished")
+    public boolean isFinished;
+
     public Task(String taskDescription, int priority, LocalDateTime createdTime, LocalDateTime finishedTime){
         this.taskDescription = taskDescription;
         this.priority = priority;
         this.createdTime = createdTime;
         this.finishedTime = finishedTime;
+        this.isFinished = false;
     }
 
     // getters
@@ -59,6 +62,10 @@ public class Task {
         return finishedTime;
     }
 
+    public boolean isFinished() {
+        return isFinished;
+    }
+
     // setters
     public void setTaskDescription(String taskDescription) {
         this.taskDescription = taskDescription;
@@ -78,5 +85,9 @@ public class Task {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setFinished(){
+        this.isFinished = true;
     }
 }

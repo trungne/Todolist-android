@@ -26,6 +26,10 @@ public class TaskViewModel extends AndroidViewModel {
         return this.allTasks;
     }
 
+    public void update(int id, String description, int priority, String finishedTime){
+        this.taskRepository.update(id, description, priority, finishedTime);
+    }
+
     public void insert(Task task){
         this.taskRepository.insert(task);
     }

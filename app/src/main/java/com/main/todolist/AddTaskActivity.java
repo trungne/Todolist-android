@@ -39,10 +39,10 @@ public class AddTaskActivity extends AppCompatActivity {
         this.taskDescription = findViewById(R.id.taskDescription);
         this.radioGroup = findViewById(R.id.priorities);
 
-        this.timePicker = findViewById(R.id.timePicker);
+        this.timePicker = findViewById(R.id.editTaskTime);
         this.timePicker.setIs24HourView(true);
 
-        this.datePicker = findViewById(R.id.datePicker);
+        this.datePicker = findViewById(R.id.editTaskDate);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

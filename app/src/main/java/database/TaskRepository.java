@@ -33,6 +33,10 @@ public class TaskRepository {
         new deleteByIdAsyncTask(this.mTaskDao).execute(id);
     }
 
+    public void update(int id, String description, int priority, String finishedTime){
+        new updateAsyncTask(this.mTaskDao, id, description, priority, finishedTime).execute();
+    }
+
     private static class insertAsyncTask extends AsyncTask<Task, Void, Void> {
         private final TaskDao mAsyncTaskDao;
 
@@ -47,7 +51,7 @@ public class TaskRepository {
         }
     }
 
-    private static class deleteAsyncTask extends  AsyncTask<Task, Void, Void> {
+    private static class deleteAsyncTask extends AsyncTask<Task, Void, Void> {
         private final TaskDao mAsyncTaskDao;
 
         deleteAsyncTask(TaskDao dao){
@@ -71,6 +75,29 @@ public class TaskRepository {
         @Override
         protected Void doInBackground(Integer... integers) {
             this.mAsyncTaskDao.deleteById(integers[0]);
+            return null;
+        }
+    }
+
+    private static class updateAsyncTask extends AsyncTask<Void, Void, Void> {
+        private final TaskDao mAsyncTaskDao;
+        int id;
+        String description;
+        int priority;
+        String finishedTime;
+
+        updateAsyncTask(TaskDao dao, int id, String description, int priority, String finishedTime) {
+            this.mAsyncTaskDao = dao;
+            this.id = id;
+            this.description = description;
+            this.priority = priority;
+            this.finishedTime = finishedTime;
+        }
+
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            this.mAsyncTaskDao.update(id, description, priority, finishedTime);
             return null;
         }
     }

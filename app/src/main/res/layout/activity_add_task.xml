@@ -99,14 +99,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
-                    android:text="Description"
-                    android:textSize="24sp" />
             </RadioGroup>
 
             <TextView
@@ -122,7 +114,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/priorities" />
 
             <TimePicker
-                android:id="@+id/timePicker"
+                android:id="@+id/editTaskTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -148,7 +140,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/priorities" />
 
             <DatePicker
-                android:id="@+id/datePicker"
+                android:id="@+id/editTaskDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:calendarViewShown="false"
@@ -174,7 +166,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/datePicker"
+                app:layout_constraintTop_toBottomOf="@+id/editTaskDate"
                 app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
