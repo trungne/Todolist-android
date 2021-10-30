@@ -7,20 +7,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import database.Task;
 import model.TaskViewModel;
 
 public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> {
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd ");
+
     private List<Task> tasks;
     private Context context;
     private final FragmentManager fragmentManager;
@@ -49,15 +49,29 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.description.setText(tasks.get(position).getTaskDescription());
         holder.editButton.setOnClickListener(v -> {
-            EditTaskFragment editTaskFragment = new EditTaskFragment(tasks.get(position), taskViewModel);
-            editTaskFragment.show(fragmentManager, "Edit");
+            EditTaskDialog editTaskDialog = new EditTaskDialog(tasks.get(position), taskViewModel);
+            editTaskDialog.show(fragmentManager, "Edit");
         });
+        holder.finishedTime.setText(tasks.get(position).getFinishedTime().format(DATE_TIME_FORMATTER));
 
         holder.checkbox.setOnClickListener(v -> {
             if(holder.checkbox.isChecked()){
                 taskViewModel.deleteById(tasks.get(position).getId());
             }
         });
+        String priority = "";
+        switch (tasks.get(position).getPriority()){
+            case Task.TASK_PRIORITY_LOW:
+                priority = "!";
+                break;
+            case Task.TASK_PRIORITY_MEDIUM:
+                priority = "!!";
+                break;
+            case Task.TASK_PRIORITY_HIGH:
+                priority = "!!!";
+                break;
+        }
+        holder.priority.setText(priority);
 
     }
 
@@ -70,12 +84,16 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
         public final CheckBox checkbox;
         public final TextView description;
         public final Button editButton;
+        public final TextView finishedTime;
+        public final TextView priority;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             checkbox = itemView.findViewById(R.id.checkBoxTask);
             description = itemView.findViewById(R.id.textViewTaskDescription);
             editButton = itemView.findViewById(R.id.taskEditButton);
+            finishedTime = itemView.findViewById(R.id.taskDeadline);
+            priority = itemView.findViewById(R.id.taskPriority);
         }
     }
 }

@@ -1,19 +1,18 @@
 package com.main.todolist;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     private TaskViewModel model;
 
-    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.recyclerView = findViewById(R.id.tasks);
-        this.swipeRefreshLayout = findViewById(R.id.refreshLayout);
 
-//        swipeRefreshLayout.setOnRefreshListener(() -> {
-//            startActivity(new Intent(this, AddTaskActivity.class));
-//            this.swipeRefreshLayout.setRefreshing(true);
-//        });
 
         this.model = new ViewModelProvider(this).get(TaskViewModel.class);
         this.viewAdapter = new ViewAdapter(new ArrayList<>(), getSupportFragmentManager(), model);

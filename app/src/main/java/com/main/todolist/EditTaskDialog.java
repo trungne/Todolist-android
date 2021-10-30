@@ -2,11 +2,6 @@ package com.main.todolist;
 
 
 import android.os.Bundle;
-
-
-import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +13,14 @@ import android.widget.RadioGroup;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
+import androidx.fragment.app.DialogFragment;
 
 import java.time.LocalDateTime;
 
 import database.Task;
 import model.TaskViewModel;
 
-public class EditTaskFragment extends DialogFragment {
+public class EditTaskDialog extends DialogFragment {
     private Task task;
     private TaskViewModel taskViewModel;
 
@@ -35,7 +30,7 @@ public class EditTaskFragment extends DialogFragment {
     private TimePicker timePicker;
     private DatePicker datePicker;
 
-    public EditTaskFragment(Task task, TaskViewModel taskViewModel) {
+    public EditTaskDialog(Task task, TaskViewModel taskViewModel) {
         this.task = task;
         this.taskViewModel = taskViewModel;
     }
