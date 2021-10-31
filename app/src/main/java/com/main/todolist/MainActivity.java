@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         };
 
         this.model.getAllTasks().observe(this, tasksObserver);
+
+        Button addTaskBtn = findViewById(R.id.addTaskButton);
+        addTaskBtn.setOnClickListener(v -> {
+            startActivity(new Intent(this, AddTaskActivity.class));
+        });
     }
 
     @Override

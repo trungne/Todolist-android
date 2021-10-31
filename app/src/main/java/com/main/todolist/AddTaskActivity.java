@@ -36,13 +36,13 @@ public class AddTaskActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(TaskViewModel.class);
 
-        this.taskDescription = findViewById(R.id.taskDescription);
-        this.radioGroup = findViewById(R.id.priorities);
+        this.taskDescription = findViewById(R.id.addTaskTaskDescription);
+        this.radioGroup = findViewById(R.id.addTaskPriorities);
 
-        this.timePicker = findViewById(R.id.editTaskTime);
+        this.timePicker = findViewById(R.id.addTaskTaskTime);
         this.timePicker.setIs24HourView(true);
 
-        this.datePicker = findViewById(R.id.editTaskDate);
+        this.datePicker = findViewById(R.id.addTaskTaskDate);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

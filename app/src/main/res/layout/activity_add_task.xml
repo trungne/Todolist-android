@@ -15,7 +15,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/taskDescriptionLabel"
+                android:id="@+id/addTaskTaskDescriptionLabel"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
@@ -31,19 +31,19 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/taskDescription"
+                android:id="@+id/addTaskTaskDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="What is it you want to do?"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                app:layout_constraintEnd_toEndOf="@+id/taskDescriptionLabel"
-                app:layout_constraintStart_toStartOf="@+id/taskDescriptionLabel"
-                app:layout_constraintTop_toBottomOf="@+id/taskDescriptionLabel" />
+                app:layout_constraintEnd_toEndOf="@+id/addTaskTaskDescriptionLabel"
+                app:layout_constraintStart_toStartOf="@+id/addTaskTaskDescriptionLabel"
+                app:layout_constraintTop_toBottomOf="@+id/addTaskTaskDescriptionLabel" />
 
             <TextView
-                android:id="@+id/priorityLabel"
+                android:id="@+id/addTaskPriorityLabel"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
@@ -56,16 +56,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/taskDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/addTaskTaskDescription" />
 
             <RadioGroup
-                android:id="@+id/priorities"
+                android:id="@+id/addTaskPriorities"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/priorityLabel"
-                app:layout_constraintStart_toStartOf="@+id/priorityLabel"
-                app:layout_constraintTop_toBottomOf="@+id/priorityLabel">
+                app:layout_constraintEnd_toEndOf="@+id/addTaskPriorityLabel"
+                app:layout_constraintStart_toStartOf="@+id/addTaskPriorityLabel"
+                app:layout_constraintTop_toBottomOf="@+id/addTaskPriorityLabel">
 
                 <View
                     android:layout_width="0dip"
@@ -102,7 +102,7 @@
             </RadioGroup>
 
             <TextView
-                android:id="@+id/timeLabel"
+                android:id="@+id/addTaskTimeLabel"
                 android:layout_width="152dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
@@ -110,24 +110,24 @@
                 android:text="Time"
                 android:textAllCaps="false"
                 android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="@+id/priorityLabel"
-                app:layout_constraintTop_toBottomOf="@+id/priorities" />
+                app:layout_constraintStart_toStartOf="@+id/addTaskPriorityLabel"
+                app:layout_constraintTop_toBottomOf="@+id/addTaskPriorities" />
 
             <TimePicker
-                android:id="@+id/editTaskTime"
+                android:id="@+id/addTaskTaskTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:timePickerMode="spinner"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/timeLabel"
+                app:layout_constraintEnd_toEndOf="@+id/addTaskTimeLabel"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/timeLabel"
-                app:layout_constraintTop_toBottomOf="@+id/timeLabel"
+                app:layout_constraintStart_toStartOf="@+id/addTaskTimeLabel"
+                app:layout_constraintTop_toBottomOf="@+id/addTaskTimeLabel"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/dateLabel"
+                android:id="@+id/addTaskDateLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
@@ -135,23 +135,23 @@
                 android:text="Date"
                 android:textAllCaps="false"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/priorityLabel"
-                app:layout_constraintStart_toEndOf="@+id/timeLabel"
-                app:layout_constraintTop_toBottomOf="@+id/priorities" />
+                app:layout_constraintEnd_toEndOf="@+id/addTaskPriorityLabel"
+                app:layout_constraintStart_toEndOf="@+id/addTaskTimeLabel"
+                app:layout_constraintTop_toBottomOf="@+id/addTaskPriorities" />
 
             <DatePicker
-                android:id="@+id/editTaskDate"
+                android:id="@+id/addTaskTaskDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
-                app:layout_constraintEnd_toEndOf="@+id/dateLabel"
+                app:layout_constraintEnd_toEndOf="@+id/addTaskDateLabel"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/dateLabel"
-                app:layout_constraintTop_toBottomOf="@+id/dateLabel" />
+                app:layout_constraintStart_toStartOf="@+id/addTaskDateLabel"
+                app:layout_constraintTop_toBottomOf="@+id/addTaskDateLabel" />
 
             <Button
-                android:id="@+id/addTaskButton"
+                android:id="@+id/addTaskAddButton"
                 android:layout_width="0dp"
                 android:layout_height="72dp"
                 android:layout_marginStart="16dp"
@@ -166,7 +166,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTaskDate"
+                app:layout_constraintTop_toBottomOf="@+id/addTaskTaskDate"
                 app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,8 +21,8 @@ import database.Task;
 import model.TaskViewModel;
 
 public class EditTaskDialog extends DialogFragment {
-    private Task task;
-    private TaskViewModel taskViewModel;
+    private final Task task;
+    private final TaskViewModel taskViewModel;
 
     // widgets
     private EditText editTaskDescription;
@@ -117,13 +117,13 @@ public class EditTaskDialog extends DialogFragment {
         }
 
         // set time
-        timePicker = rootView.findViewById(R.id.editTaskTime);
+        timePicker = rootView.findViewById(R.id.addTaskTaskTime);
         timePicker.setIs24HourView(true);
         timePicker.setHour(task.getFinishedTime().getHour());
         timePicker.setMinute(task.getFinishedTime().getMinute());
 
         // set date
-        datePicker = rootView.findViewById(R.id.editTaskDate);
+        datePicker = rootView.findViewById(R.id.addTaskTaskDate);
         datePicker.updateDate(task.getFinishedTime().getYear(), task.getFinishedTime().getMonthValue(), task.getFinishedTime().getDayOfMonth());
     }
 
