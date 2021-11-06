@@ -80,7 +80,7 @@ public class TaskRepository {
     private void createPendingNotification(long id, String description, LocalDateTime finishedTime){
         Intent intent = new Intent(application.getApplicationContext(), ReminderBroadcast.class);
         intent.putExtra(ReminderBroadcast.TASK_DESCRIPTION_KEY, description);
-        intent.putExtra(ReminderBroadcast.TASK_ID_KEY, id);
+        intent.putExtra(ReminderBroadcast.TASK_ID_KEY, String.valueOf(id));
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 application.getApplicationContext(),

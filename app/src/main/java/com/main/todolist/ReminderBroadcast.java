@@ -22,7 +22,7 @@ public class ReminderBroadcast extends BroadcastReceiver {
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_note);
 
         String description = intent.getStringExtra(TASK_DESCRIPTION_KEY);
-        int id = intent.getIntExtra(TASK_ID_KEY, 0);
+        int id = Integer.parseInt(intent.getStringExtra(TASK_ID_KEY));
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, MainActivity.CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_note)
