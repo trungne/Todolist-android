@@ -82,28 +82,10 @@ public class MainActivity extends AppCompatActivity {
         LocalDateTime createdTime = LocalDateTime.parse(intent.getStringExtra(AddTaskActivity.taskCreatedTimeKey));
         LocalDateTime finishedTime = LocalDateTime.parse(intent.getStringExtra(AddTaskActivity.taskFinishedTimeKey));
         Task task = new Task(description, priority, createdTime, finishedTime);
-        createPendingNotification(task);
         model.insert(task);
     }
 
-    private void createPendingNotification(Task task){
-        Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
-        intent.putExtra("com.main.todolist.MainActivity.taskDescription", task.getTaskDescription());
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
 
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        long timeAtCreatingTask = System.currentTimeMillis();
-
-        long taskFinishedTime = task.getFinishedTime().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
-
-        // don't create notification pending for tasks in the past
-        if (taskFinishedTime < timeAtCreatingTask) {
-            return;
-        }
-
-        alarmManager.set(AlarmManager.RTC_WAKEUP, taskFinishedTime, pendingIntent);
-    }
 
     public void addTaskBtnEvent(View view){
         mStartForResult.launch(new Intent(this, AddTaskActivity.class));

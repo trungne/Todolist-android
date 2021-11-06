@@ -33,6 +33,7 @@ public class EditTaskDialog extends DialogFragment {
     public EditTaskDialog(Task task, TaskViewModel taskViewModel) {
         this.task = task;
         this.taskViewModel = taskViewModel;
+
     }
 
     @Override
