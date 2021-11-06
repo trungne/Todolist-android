@@ -1,14 +1,11 @@
 package com.main.todolist;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,9 +24,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,11 +112,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.sortByFinishedTime){
-            this.model.setTaskSortingProperty(TaskViewModel.SORTED_BY_FINISH_TIME);
+            this.model.setTaskSortingProperty(TaskViewModel.SORTED_BY_DUE_TIME);
             return true;
         }
         else if (item.getItemId() == R.id.sortByPriority){
             this.model.setTaskSortingProperty(TaskViewModel.SORTED_BY_PRIORITY);
+            return true;
+        }
+        else if (item.getItemId() == R.id.sortByDueTime){
+            this.model.setTaskSortingProperty(TaskViewModel.SORTED_BY_DUE_TIME);
             return true;
         }
         return super.onOptionsItemSelected(item);

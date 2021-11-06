@@ -6,4 +6,7 @@
     <item
         android:id="@+id/sortByPriority"
         android:title="@string/sort_by_priority" />
+    <item
+        android:id="@+id/sortByDueTime"
+        android:title="@string/sort_by_due_time" />
 </menu>

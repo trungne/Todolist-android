@@ -1,11 +1,6 @@
 package model;
 
-import static android.content.Context.ALARM_SERVICE;
-
-import android.app.AlarmManager;
 import android.app.Application;
-import android.app.PendingIntent;
-import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -13,11 +8,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 
-import com.main.todolist.MainActivity;
-import com.main.todolist.ReminderBroadcast;
-
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.List;
 
 import database.Task;
@@ -25,7 +15,7 @@ import database.TaskRepository;
 
 public class TaskViewModel extends AndroidViewModel {
     public static final int SORTED_BY_PRIORITY = 1;
-    public static final int SORTED_BY_FINISH_TIME = 2;
+    public static final int SORTED_BY_DUE_TIME = 2;
     public static final int SORTED_BY_CREATED_TIME = 3;
 
     private final TaskRepository taskRepository;
@@ -40,7 +30,7 @@ public class TaskViewModel extends AndroidViewModel {
             switch (property){
                 case SORTED_BY_PRIORITY:
                     return taskRepository.getAllTasksOrderedByPriority();
-                case SORTED_BY_FINISH_TIME:
+                case SORTED_BY_DUE_TIME:
                     return taskRepository.getAllTasksOrderedByFinishedTime();
                 case SORTED_BY_CREATED_TIME:
                     return taskRepository.getAllTasksOrderedByCreatedTime();

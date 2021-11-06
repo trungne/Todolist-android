@@ -63,7 +63,10 @@ public class TaskRepository {
 
     public void update(long id, String description, int priority, String finishedTime){
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(() -> mTaskDao.update(id, description, priority,finishedTime));
+        executor.execute(() -> {
+            mTaskDao.update(id, description, priority,finishedTime);
+            createPendingNotification(id, description, LocalDateTime.parse(finishedTime));
+        });
     }
 
     private void deletePendingNotification(long id) {
