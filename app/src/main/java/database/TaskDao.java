@@ -29,7 +29,7 @@ public interface TaskDao {
     @Query("SELECT * FROM tasks")
     LiveData<List<Task>> getAllTasks();
 
-    @Query("SELECT * FROM tasks ORDER BY priority")
+    @Query("SELECT * FROM tasks ORDER BY priority DESC")
     LiveData<List<Task>> getAllTasksOrderedByPriority();
 
     @Query("SELECT * FROM tasks ORDER BY created_time")
