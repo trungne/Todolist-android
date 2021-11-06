@@ -128,7 +128,7 @@ public class EditTaskDialog extends DialogFragment {
         datePicker.updateDate(task.getFinishedTime().getYear(), task.getFinishedTime().getMonthValue(), task.getFinishedTime().getDayOfMonth());
     }
 
-    private void updateTask(int id, String newDescription, int newPriority, LocalDateTime newFinishedTime){
+    private void updateTask(long id, String newDescription, int newPriority, LocalDateTime newFinishedTime){
         this.taskViewModel.update(id, newDescription, newPriority, newFinishedTime.toString());
     }
 }

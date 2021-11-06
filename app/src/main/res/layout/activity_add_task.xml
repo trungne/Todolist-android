@@ -22,7 +22,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
-                android:text="Task Description"
+                android:text="@string/task_description"
                 android:textAllCaps="false"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +35,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="What is it you want to do?"
+                android:hint="@string/task_description_hint"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="@+id/addTaskTaskDescriptionLabel"
@@ -51,7 +51,7 @@
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
-                android:text="Priority"
+                android:text="@string/priority"
                 android:textAllCaps="false"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -79,21 +79,21 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:text="!" />
+                    android:text="@string/lowest_priority" />
 
                 <RadioButton
                     android:id="@+id/radioButton4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="!!" />
+                    android:text="@string/average_priority" />
 
                 <RadioButton
                     android:id="@+id/radioButton5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="!!!" />
+                    android:text="@string/highest_priority" />
 
                 <View
                     android:layout_width="0dip"
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 android:gravity="center"
-                android:text="Time"
+                android:text="@string/time"
                 android:textAllCaps="false"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="@+id/addTaskPriorityLabel"
@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 android:gravity="center"
-                android:text="Date"
+                android:text="@string/date"
                 android:textAllCaps="false"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="@+id/addTaskPriorityLabel"
@@ -161,7 +161,7 @@
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="#4C9140"
                 android:onClick="addTask"
-                android:text="Add"
+                android:text="@string/add_button_text"
                 android:textAllCaps="false"
                 android:textSize="34sp"
                 app:layout_constraintBottom_toBottomOf="parent"

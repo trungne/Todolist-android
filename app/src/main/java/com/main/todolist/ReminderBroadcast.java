@@ -16,6 +16,8 @@ public class ReminderBroadcast extends BroadcastReceiver {
     public static final String TASK_DESCRIPTION_KEY = "com.main.todolist.ReminderBroadcast.taskDescription";
     public static final String TASK_ID_KEY = "com.main.todolist.ReminderBroadcast.taskID";
     @Override
+
+    // create notification when receive broadcast from alarm manager
     public void onReceive(Context context, Intent intent) {
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_note);
 

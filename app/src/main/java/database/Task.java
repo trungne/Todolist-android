@@ -17,7 +17,7 @@ public class Task {
     public static final int TASK_PRIORITY_HIGH = 2;
 
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    public long id;
 
     @ColumnInfo(name = "task_description")
     public String taskDescription;
@@ -42,7 +42,7 @@ public class Task {
     }
 
     // getters
-    public int getId() {
+    public long getId() {
         return id;
     }
 

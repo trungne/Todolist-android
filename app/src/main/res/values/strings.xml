@@ -5,5 +5,17 @@
 
     <string name="channel_name">Task Notification</string>
     <string name="channel_description">A Notification channel for Todolist Application</string>
+    <string name="sort_by_time">Sort by time</string>
+    <string name="sort_by_priority">Sort by priority</string>
+
+    <string name="lowest_priority">!</string>
+    <string name="average_priority">!!</string>
+    <string name="highest_priority">!!!</string>
+    <string name="task_description">Task Description</string>
+    <string name="task_description_hint">What is it you want to do?</string>
+    <string name="priority">Priority</string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
+    <string name="add_button_text">Add</string>
 
 </resources>
