@@ -28,4 +28,13 @@ public interface TaskDao {
 
     @Query("SELECT * FROM tasks")
     LiveData<List<Task>> getAllTasks();
+
+    @Query("SELECT * FROM tasks ORDER BY priority")
+    LiveData<List<Task>> getAllTasksOrderedByPriority();
+
+    @Query("SELECT * FROM tasks ORDER BY created_time")
+    LiveData<List<Task>> getAllTasksOrderedByCreatedTime();
+
+    @Query("SELECT * FROM tasks ORDER BY finished_time")
+    LiveData<List<Task>> getAllTasksOrderedByFinishedTime();
 }

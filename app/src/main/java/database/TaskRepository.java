@@ -22,31 +22,35 @@ public class TaskRepository {
         return this.mAllTasks;
     }
 
+    public LiveData<List<Task>> getAllTasksOrderedByPriority() {
+        return mTaskDao.getAllTasksOrderedByPriority();
+    }
+
+    public LiveData<List<Task>> getAllTasksOrderedByCreatedTime() {
+        return mTaskDao.getAllTasksOrderedByCreatedTime();
+    }
+
+    public LiveData<List<Task>> getAllTasksOrderedByFinishedTime() {
+        return mTaskDao.getAllTasksOrderedByFinishedTime();
+    }
+
     public void insert(Task task){
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(() -> {
-            mTaskDao.insert(task);
-        });
+        executor.execute(() -> mTaskDao.insert(task));
     }
 
     public void delete(Task task){
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(() -> {
-            mTaskDao.delete(task);
-        });
+        executor.execute(() -> mTaskDao.delete(task));
     }
 
     public void deleteById(int id){
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(() -> {
-            mTaskDao.deleteById(id);
-        });
+        executor.execute(() -> mTaskDao.deleteById(id));
     }
 
     public void update(int id, String description, int priority, String finishedTime){
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(() -> {
-            mTaskDao.update(id, description, priority,finishedTime);
-        });
+        executor.execute(() -> mTaskDao.update(id, description, priority,finishedTime));
     }
 }

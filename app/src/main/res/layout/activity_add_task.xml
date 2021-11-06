@@ -40,7 +40,8 @@
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="@+id/addTaskTaskDescriptionLabel"
                 app:layout_constraintStart_toStartOf="@+id/addTaskTaskDescriptionLabel"
-                app:layout_constraintTop_toBottomOf="@+id/addTaskTaskDescriptionLabel" />
+                app:layout_constraintTop_toBottomOf="@+id/addTaskTaskDescriptionLabel"
+                tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/addTaskPriorityLabel"
@@ -158,6 +159,7 @@
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
+                android:backgroundTint="#4C9140"
                 android:onClick="addTask"
                 android:text="Add"
                 android:textAllCaps="false"

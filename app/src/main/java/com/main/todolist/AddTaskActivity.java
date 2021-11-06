@@ -1,5 +1,6 @@
 package com.main.todolist;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -21,20 +23,21 @@ import database.Task;
 import model.TaskViewModel;
 
 public class AddTaskActivity extends AppCompatActivity {
+    public static final String taskDescriptionKey = "com.main.todolist.AddTaskActivity.TASK_DESCRIPTION";
+    public static final String taskPriorityKey = "com.main.todolist.AddTaskActivity.TASK_PRIORITY";
+    public static final String taskCreatedTimeKey = "com.main.todolist.AddTaskActivity.TASK_CREATED_TIME";;
+    public static final String taskFinishedTimeKey = "com.main.todolist.AddTaskActivity.TASK_FINISHED_TIME";
+
     private TextView taskDescription;
     private RadioGroup radioGroup;
     private TimePicker timePicker;
     private DatePicker datePicker;
-
-    TaskViewModel viewModel;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
-        viewModel = new ViewModelProvider(this).get(TaskViewModel.class);
 
         this.taskDescription = findViewById(R.id.addTaskTaskDescription);
         this.radioGroup = findViewById(R.id.addTaskPriorities);
@@ -45,14 +48,13 @@ public class AddTaskActivity extends AppCompatActivity {
         this.datePicker = findViewById(R.id.addTaskTaskDate);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     public void addTask(View view){
         // get description
         if (this.taskDescription.getText().toString().isEmpty()){
             Toast.makeText(this, "Task description cannot be empty!", Toast.LENGTH_LONG).show();
-            finish();
             return;
         }
+
         String description = this.taskDescription.getText().toString();
 
         // get priority
@@ -79,12 +81,13 @@ public class AddTaskActivity extends AppCompatActivity {
 
         // get created time
         LocalDateTime createdTime = LocalDateTime.now();
+        Intent intent = new Intent();
+        intent.putExtra(taskDescriptionKey, description);
+        intent.putExtra(taskPriorityKey, String.valueOf(priority));
+        intent.putExtra(taskCreatedTimeKey, createdTime.toString());
+        intent.putExtra(taskFinishedTimeKey, finishedTime.toString());
 
-        Task task = new Task(description, priority, createdTime, finishedTime);
-        viewModel.insert(task);
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        setResult(Activity.RESULT_OK, intent);
         finish();
     }
 }

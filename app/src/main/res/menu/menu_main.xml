@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/add_task_menu"
-        android:title="Add task" />
+        android:id="@+id/sortByFinishedTime"
+        android:title="Sort by time" />
+    <item
+        android:id="@+id/sortByPriority"
+        android:title="Sort by priority" />
 </menu>
