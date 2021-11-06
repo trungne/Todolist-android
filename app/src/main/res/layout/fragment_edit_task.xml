@@ -1,137 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="visible"
     tools:context=".EditTaskDialog">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/editTaskDescription"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/addTaskTaskDate"
+        app:layout_constraintStart_toStartOf="@+id/addTaskTaskDate"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-        <EditText
-            android:id="@+id/editTaskDescription"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.079"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
 
-        <RadioGroup
-            android:id="@+id/editTaskPriority"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/editTaskDescription"
-            app:layout_constraintStart_toStartOf="@+id/editTaskDescription"
-            app:layout_constraintTop_toBottomOf="@+id/editTaskDescription">
+    <RadioGroup
+        android:id="@+id/editTaskPriority"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/addTaskTaskDate"
+        app:layout_constraintStart_toStartOf="@+id/addTaskTaskDate"
+        app:layout_constraintTop_toBottomOf="@+id/editTaskDescription">
 
-            <View
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <RadioButton
-                android:id="@+id/editTaskPriorityLow"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="false"
-                android:text="!"
-                tools:ignore="TextContrastCheck" />
-
-            <RadioButton
-                android:id="@+id/editTaskPriorityMedium"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="!!" />
-
-            <RadioButton
-                android:id="@+id/editTaskPriorityHigh"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="!!!" />
-
-            <View
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </RadioGroup>
-
-        <TimePicker
-            android:id="@+id/addTaskTaskTime"
-            android:layout_width="0dp"
+        <View
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:timePickerMode="spinner"
-            app:layout_constraintEnd_toEndOf="@+id/editTaskPriority"
-            app:layout_constraintStart_toStartOf="@+id/editTaskPriority"
-            app:layout_constraintTop_toBottomOf="@+id/editTaskPriority" />
+            android:layout_weight="1" />
 
-        <DatePicker
-            android:id="@+id/addTaskTaskDate"
-            android:layout_width="0dp"
+        <RadioButton
+            android:id="@+id/editTaskPriorityLow"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/addTaskTaskTime"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/addTaskTaskTime"
-            app:layout_constraintTop_toBottomOf="@+id/addTaskTaskTime"
-            app:layout_constraintVertical_bias="0.0" />
+            android:checked="false"
+            android:text="!"
+            tools:ignore="TextContrastCheck" />
 
-        <Button
-            android:id="@+id/editTaskEditButton"
-            android:layout_width="48dp"
+        <RadioButton
+            android:id="@+id/editTaskPriorityMedium"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#4C9140"
-            android:paddingStart="12dp"
-            android:paddingEnd="0dp"
-            app:icon="@drawable/ic_complete"
-            app:layout_constraintEnd_toEndOf="@+id/addTaskTaskDate"
-            app:layout_constraintTop_toBottomOf="@+id/addTaskTaskDate"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:text="!!" />
 
-        <Button
-            android:id="@+id/editTaskCancelButton"
-            android:layout_width="48dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="#787878"
-            android:paddingStart="12dp"
-            android:paddingEnd="0dp"
-            app:icon="@drawable/ic_cancel"
-            app:layout_constraintBottom_toBottomOf="@+id/editTaskEditButton"
-            app:layout_constraintEnd_toStartOf="@+id/editTaskEditButton"
-            app:layout_constraintTop_toTopOf="@+id/editTaskEditButton"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <Button
-            android:id="@+id/editTaskDeleteButton"
-            android:layout_width="48dp"
+        <RadioButton
+            android:id="@+id/editTaskPriorityHigh"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#DF6868"
-            android:paddingStart="12dp"
-            android:paddingEnd="0dp"
-            app:icon="@drawable/ic_delete"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addTaskTaskDate"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:text="!!!" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+        <View
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </RadioGroup>
+
+
+    <DatePicker
+        android:id="@+id/addTaskTaskDate"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTaskTaskTime" />
+
+    <TimePicker
+        android:id="@+id/addTaskTaskTime"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="@+id/addTaskTaskDate"
+        app:layout_constraintStart_toStartOf="@+id/addTaskTaskDate"
+        app:layout_constraintTop_toBottomOf="@+id/editTaskPriority" />
+
+    <Button
+        android:id="@+id/editTaskCancelButton"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#787878"
+        android:paddingStart="12dp"
+        android:paddingEnd="0dp"
+        app:icon="@drawable/ic_cancel"
+        app:layout_constraintEnd_toStartOf="@+id/editTaskEditButton"
+        app:layout_constraintTop_toBottomOf="@+id/addTaskTaskDate"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/editTaskEditButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#4C9140"
+        android:paddingStart="12dp"
+        android:paddingEnd="0dp"
+        app:icon="@drawable/ic_complete"
+        app:layout_constraintBottom_toBottomOf="@+id/editTaskCancelButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTaskCancelButton"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/editTaskDeleteButton"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#DF6868"
+        android:paddingStart="12dp"
+        android:paddingEnd="0dp"
+        app:icon="@drawable/ic_delete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTaskTaskDate"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
