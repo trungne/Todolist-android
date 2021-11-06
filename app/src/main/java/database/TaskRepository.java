@@ -73,13 +73,11 @@ public class TaskRepository {
                 (int) id,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
-        System.out.println(id);
         AlarmManager alarmManager = (AlarmManager) application.getSystemService(ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
     }
 
     private void createPendingNotification(long id, String description, LocalDateTime finishedTime){
-        System.out.println(id);
         Intent intent = new Intent(application.getApplicationContext(), ReminderBroadcast.class);
         intent.putExtra(ReminderBroadcast.TASK_DESCRIPTION_KEY, description);
         intent.putExtra(ReminderBroadcast.TASK_ID_KEY, id);
